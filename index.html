@@ -3,13 +3,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MARUDHAM 360 – Demo Video</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#EDF1E6;--ink:#14301D;--soft:#4b6350;--gold:#C98F12;--clay:#7A4A2B;--card:#fff;--line:#c9d5c2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F2015;--ink:#EAF2E2;--soft:#9db5a2;--gold:#E3B448;--clay:#d59a6f;--card:#183424;--line:#2b4a36}}
 :root[data-theme="dark"]{--bg:#0F2015;--ink:#EAF2E2;--soft:#9db5a2;--gold:#E3B448;--clay:#d59a6f;--card:#183424;--line:#2b4a36}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,"Noto Sans Tamil",sans-serif}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque","Noto Sans Tamil","Noto Sans Devanagari","Noto Sans Bengali","Noto Sans Telugu","Noto Sans Kannada","Noto Sans Malayalam",system-ui,"Noto Sans Tamil",sans-serif}
 body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:12px}
 #stage{position:relative;width:min(100%,960px);aspect-ratio:16/9;min-height:300px;background:var(--card);border:2px solid var(--ink);border-radius:14px;overflow:hidden}
 .sc{position:absolute;inset:0;padding:5% 6%;display:flex;flex-direction:column;justify-content:center;gap:2.2%;opacity:0;visibility:hidden;transition:opacity .5s}
@@ -54,6 +55,31 @@ button:focus-visible{outline:3px solid var(--gold)}
 .flow b{opacity:.4;transition:.3s}.flow b.h{opacity:1;color:var(--gold);font-weight:800}
 #start{position:absolute;inset:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center}
 #start button{font-size:clamp(14px,2.4vw,20px)}
+
+.sc{transform:scale(1.05);transition:opacity .6s,transform 1.2s}.sc.on{transform:none}
+.pt{position:absolute;bottom:-10px;width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.5;animation:up 9s linear infinite;pointer-events:none}
+@keyframes up{to{transform:translate(30px,-110cqh);opacity:0}}
+#stage{container-type:size}
+.grid{position:relative;overflow:hidden}
+.scan{position:absolute;left:0;right:0;height:3px;background:#fff;box-shadow:0 0 12px #fff;animation:scan 2.4s linear infinite}@keyframes scan{from{top:0}to{top:100%}}
+.tr{position:absolute;bottom:15%;left:-10%;font-size:clamp(22px,4.4vw,44px);animation:drive 8s linear infinite}@keyframes drive{to{left:72%}}
+.bd{display:flex;flex-wrap:wrap;gap:14px;font-size:clamp(11px,1.9vw,19px)}.bd span{opacity:.2;animation:blink 6s infinite}.bd span:nth-child(2){animation-delay:2s}.bd span:nth-child(3){animation-delay:4s}
+@keyframes blink{8%,30%{opacity:1}40%,100%{opacity:.2}}
+.coin{position:absolute;bottom:24%;font-size:clamp(16px,3vw,28px);animation:coin 3s ease-out infinite}@keyframes coin{from{transform:translateY(0)}to{transform:translateY(-110px);opacity:0}}
+.lock{position:absolute;right:8%;top:8%;font-size:clamp(20px,4vw,40px);animation:pulse2 2s infinite}@keyframes pulse2{50%{transform:scale(1.25)}}
+.cf{position:absolute;top:-14px;z-index:3;width:8px;height:12px;animation:fall 3.5s linear forwards}@keyframes fall{to{top:105%;transform:rotate(540deg);opacity:.2}}
+
+.decor{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sun{position:absolute;right:8%;top:-8%;width:22%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(227,180,72,.55),transparent 70%);animation:sunp 6s ease-in-out infinite}
+@keyframes sunp{50%{transform:scale(1.15)}}
+.cl{position:absolute;top:8%;font-size:clamp(20px,4vw,40px);opacity:.35;animation:cl 40s linear infinite}.c2{top:20%;animation-duration:60s;animation-delay:-20s}
+@keyframes cl{from{left:-10%}to{left:110%}}
+.field{position:absolute;left:0;right:0;bottom:11%;white-space:nowrap;overflow:hidden;font-size:clamp(12px,2.2vw,22px);opacity:.3;letter-spacing:-2px;transform-origin:bottom;animation:sway 3s ease-in-out infinite alternate}
+@keyframes sway{from{transform:skewX(-3deg)}to{transform:skewX(3deg)}}
+.drop{position:absolute;top:-6%;opacity:0;animation:dr 2.4s ease-in infinite}
+@keyframes dr{0%{transform:translateY(0);opacity:0}20%{opacity:.9}100%{transform:translateY(170px);opacity:0}}
+.cnt{font-size:clamp(14px,2.6vw,26px);color:var(--gold);font-weight:800}
+@media (prefers-reduced-motion:reduce){.sun,.cl,.field,.drop{animation:none}}
 </style></head>
 <body>
 <div id="stage" aria-live="polite">
@@ -111,84 +137,20 @@ button:focus-visible{outline:3px solid var(--gold)}
 </div>
 <div id="ctl">
  <button id="prev">Back</button><button id="play">Pause</button><button id="next">Next</button>
- <button id="voice">Narration: off</button><button id="music">Music: off</button><select id="vsel" aria-label="Narration voice" style="font:inherit;font-size:14px;padding:.45em;max-width:200px;border:1.5px solid var(--ink);border-radius:8px;background:var(--card);color:var(--ink)"></select><button id="lang">தமிழ்</button><button id="restart">Restart</button>
+ <button id="voice">Narration: off</button><button id="music">Music: off</button><select id="vsel" aria-label="Narration voice" style="font:inherit;font-size:14px;padding:.45em;max-width:200px;border:1.5px solid var(--ink);border-radius:8px;background:var(--card);color:var(--ink)"></select><select id="lsel" aria-label="Language" style="font:inherit;font-size:14px;padding:.45em;border:1.5px solid var(--ink);border-radius:8px;background:var(--card);color:var(--ink)"><option value="en">English</option><option value="ta">தமிழ்</option><option value="hi">हिन्दी</option><option value="te">తెలుగు</option><option value="kn">ಕನ್ನಡ</option><option value="bn">বাংলা</option><option value="mr">मराठी</option><option value="ml">മലയാളം</option></select><button id="restart">Restart</button>
 </div>
 <script>
-var TA=["மருதம் 360. நிலத் திட்டமிடல் முதல் அறுவடை, சந்தை, நிதி மற்றும் புதிய வாழ்வாதாரம் வரை, விவசாயிக்குத் துணைநிற்கும் ஏஐ தளம்.",
+var L={ta:["மருதம் 360. நிலத் திட்டமிடல் முதல் அறுவடை, சந்தை, நிதி மற்றும் புதிய வாழ்வாதாரம் வரை, விவசாயிக்குத் துணைநிற்கும் ஏஐ தளம்.",
 "மண், பருவம், இடம் அடிப்படையில் ஏஐ பயிர் மற்றும் விதையைப் பரிந்துரைக்கும். செலவு, வருமானம், நீர்ப்பாசனம், உரத் திட்டமும் கிடைக்கும்.",
 "செயற்கைக்கோள் என்டிவிஐ மூலம் ஒவ்வொரு வயலின் பயிர் நலனும் கண்காணிக்கப்படும். பூச்சி அபாய வரைபடமும் முன்னெச்சரிக்கைகளும் வரும்.",
 "இணையம் இல்லாவிட்டாலும் பயிர் படங்கள் சாதனத்திலேயே பகுப்பாய்வாகும். தமிழில் பேசிக் கேட்கலாம், குரல் எச்சரிக்கையும் கிடைக்கும்.",
 "ஒவ்வொரு நடவடிக்கையும் டிஜிட்டல் பதிவாகும். தொழிலாளர், இயந்திரங்கள் எளிதில் கிடைக்கும். அறுவடைக்குப் பின் தரம் மற்றும் சேமிப்பு கண்காணிப்பு.",
 "சந்தை விலை ஒப்பீடு, லாப நட்டக் கணக்கு, கடன் மற்றும் காப்பீட்டுத் தகவல். பட்டா, சிட்டா ஆவணங்கள் பாதுகாப்பான பெட்டகத்தில்.",
-"கைவினை மற்றும் மதிப்புக்கூட்டு பொருட்கள் வழியாகப் புதிய வருமானம். மருதம் 360, விவசாயியின் முழுப் பயணத்திற்கும் ஒரே தளம்."];
+"கைவினை மற்றும் மதிப்புக்கூட்டு பொருட்கள் வழியாகப் புதிய வருமானம். மருதம் 360, விவசாயியின் முழுப் பயணத்திற்கும் ஒரே தளம்."],hi:["मरुदम 360: खेत की योजना से लेकर फसल, बाज़ार, वित्त और नई आजीविका तक, किसान का पूरा साथी।", "एआई मिट्टी, मौसम और स्थान के अनुसार फसल और बीज सुझाता है, साथ में लागत, आमदनी और सिंचाई की योजना भी।", "सैटेलाइट एनडीवीआई हर खेत की सेहत पर नज़र रखता है, और कीट खतरे व मौसम की चेतावनी समय पर देता है।", "इंटरनेट न हो तब भी फसल की फोटो फोन पर ही जाँची जाती है। किसान बोलकर पूछ सकते हैं और आवाज़ में सलाह सुन सकते हैं।", "हर काम का डिजिटल रिकॉर्ड बनता है, मज़दूर और मशीनें आसानी से मिलती हैं, और कटाई के बाद गुणवत्ता व भंडारण पर नज़र रहती है।", "मंडी भाव की तुलना, लाभ-हानि का हिसाब, कर्ज़ और बीमा की जानकारी, और ज़रूरी दस्तावेज़ सुरक्षित लॉकर में।", "हस्तशिल्प और मूल्यवर्धित उत्पादों से नई कमाई। मरुदम 360, किसान की पूरी यात्रा के लिए एक मंच।"],te:["మరుదం 360: పంట ప్రణాళిక నుండి కోత, మార్కెట్, ఆర్థికం, కొత్త జీవనోపాధి వరకు రైతుకు తోడుగా ఉండే వేదిక.", "నేల, కాలం, ప్రాంతం ఆధారంగా ఏఐ పంట, విత్తనాలను సూచిస్తుంది; ఖర్చు, ఆదాయం, నీటిపారుదల ప్రణాళిక కూడా ఇస్తుంది.", "ఉపగ్రహ ఎన్డీవీఐ ప్రతి పొలం ఆరోగ్యాన్ని గమనిస్తుంది; పురుగుల ముప్పు, వాతావరణ హెచ్చరికలు ముందే వస్తాయి.", "ఇంటర్నెట్ లేకపోయినా పంట ఫోటోలు ఫోన్‌లోనే పరిశీలించబడతాయి; మాట్లాడి అడగవచ్చు, స్వరంలో సలహాలు వినవచ్చు.", "ప్రతి పనికి డిజిటల్ రికార్డు ఉంటుంది; కూలీలు, యంత్రాలు సులభంగా దొరుకుతాయి; కోత తర్వాత నాణ్యత, నిల్వ పర్యవేక్షణ ఉంటుంది.", "మార్కెట్ ధరల పోలిక, లాభనష్టాల లెక్క, రుణ బీమా సమాచారం, ముఖ్య పత్రాలు సురక్షిత లాకర్‌లో.", "హస్తకళలు, విలువ జోడించిన ఉత్పత్తులతో కొత్త ఆదాయం. మరుదం 360, రైతు ప్రయాణమంతటికీ ఒకే వేదిక."],kn:["ಮರುದಂ 360: ಬೆಳೆ ಯೋಜನೆಯಿಂದ ಕೊಯ್ಲು, ಮಾರುಕಟ್ಟೆ, ಹಣಕಾಸು ಮತ್ತು ಹೊಸ ಜೀವನೋಪಾಯದವರೆಗೆ ರೈತನ ಸಂಗಾತಿ.", "ಮಣ್ಣು, ಋತು ಮತ್ತು ಸ್ಥಳದ ಆಧಾರದ ಮೇಲೆ ಎಐ ಬೆಳೆ ಮತ್ತು ಬೀಜ ಸೂಚಿಸುತ್ತದೆ; ವೆಚ್ಚ, ಆದಾಯ ಮತ್ತು ನೀರಾವರಿ ಯೋಜನೆಯೂ ಸಿಗುತ್ತದೆ.", "ಉಪಗ್ರಹ ಎನ್‌ಡಿವಿಐ ಪ್ರತಿ ಹೊಲದ ಆರೋಗ್ಯ ಗಮನಿಸುತ್ತದೆ; ಕೀಟ ಅಪಾಯ ಮತ್ತು ಹವಾಮಾನ ಎಚ್ಚರಿಕೆ ಮೊದಲೇ ಬರುತ್ತದೆ.", "ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದಿದ್ದರೂ ಬೆಳೆ ಫೋಟೋ ಫೋನ್‌ನಲ್ಲೇ ಪರಿಶೀಲನೆಯಾಗುತ್ತದೆ; ಮಾತನಾಡಿ ಕೇಳಬಹುದು, ಧ್ವನಿಯಲ್ಲಿ ಸಲಹೆ ಕೇಳಬಹುದು.", "ಪ್ರತಿ ಕೆಲಸದ ಡಿಜಿಟಲ್ ದಾಖಲೆ ಇರುತ್ತದೆ; ಕೂಲಿಗಾರರು, ಯಂತ್ರಗಳು ಸುಲಭವಾಗಿ ಸಿಗುತ್ತವೆ; ಕೊಯ್ಲಿನ ನಂತರ ಗುಣಮಟ್ಟ, ಸಂಗ್ರಹ ಗಮನಿಸಲಾಗುತ್ತದೆ.", "ಮಾರುಕಟ್ಟೆ ಬೆಲೆ ಹೋಲಿಕೆ, ಲಾಭ ನಷ್ಟ ಲೆಕ್ಕ, ಸಾಲ ಮತ್ತು ವಿಮೆ ಮಾಹಿತಿ, ಮುಖ್ಯ ದಾಖಲೆಗಳು ಸುರಕ್ಷಿತ ಲಾಕರ್‌ನಲ್ಲಿ.", "ಕರಕುಶಲ ಮತ್ತು ಮೌಲ್ಯವರ್ಧಿತ ಉತ್ಪನ್ನಗಳಿಂದ ಹೊಸ ಆದಾಯ. ಮರುದಂ 360, ರೈತನ ಸಂಪೂರ್ಣ ಪಯಣಕ್ಕೆ ಒಂದೇ ವೇದಿಕೆ."],bn:["মরুধম 360। ফসল পরিকল্পনা থেকে কাটা, বাজার, অর্থ ও নতুন জীবিকা পর্যন্ত কৃষকের সঙ্গী।", "মাটি, ঋতু ও অবস্থান অনুযায়ী এআই ফসল ও বীজ সুপারিশ করে। খরচ, আয়, সেচ ও সারের পরিকল্পনাও দেয়।", "স্যাটেলাইট এনডিভিআই দিয়ে প্রতিটি জমির ফসলের স্বাস্থ্য নজরে থাকে। পোকামাকড়ের ঝুঁকির মানচিত্র ও আগাম সতর্কতা আসে।", "ইন্টারনেট না থাকলেও ফসলের ছবি ফোনেই বিশ্লেষণ হয়। নিজের ভাষায় বলে প্রশ্ন করুন, কণ্ঠস্বরে সতর্কতা শুনুন।", "প্রতিটি কাজের ডিজিটাল রেকর্ড থাকে। শ্রমিক ও যন্ত্র সহজে মেলে। ফসল তোলার পর মান ও মজুত নজরে রাখা হয়।", "বাজারদরের তুলনা, লাভ-ক্ষতির হিসাব, ঋণ ও বিমার তথ্য। জমির কাগজপত্র নিরাপদ লকারে।", "হস্তশিল্প ও মূল্যযুক্ত পণ্য থেকে নতুন আয়। মরুধম 360, কৃষকের পুরো যাত্রার জন্য একটি মঞ্চ।"],mr:["मरुधम 360. शेती नियोजनापासून काढणी, बाजार, वित्त आणि नवीन उपजीविकेपर्यंत शेतकऱ्याचा पूर्ण साथीदार.", "माती, हंगाम आणि ठिकाणानुसार एआय पीक आणि बियाणे सुचवते. खर्च, उत्पन्न, सिंचन आणि खत नियोजनही देते.", "उपग्रह एनडीव्हीआयद्वारे प्रत्येक शेताच्या पिकाच्या आरोग्यावर लक्ष ठेवले जाते. कीड धोका नकाशा आणि पूर्वसूचना मिळतात.", "इंटरनेट नसतानाही पिकाचा फोटो फोनवरच तपासला जातो. तुमच्या भाषेत बोलून विचारा आणि आवाजात सूचना ऐका.", "प्रत्येक कामाची डिजिटल नोंद होते. मजूर आणि यंत्रे सहज मिळतात. काढणीनंतर गुणवत्ता आणि साठवणुकीवर लक्ष ठेवले जाते.", "बाजारभावांची तुलना, नफा-तोटा हिशोब, कर्ज आणि विमा माहिती. जमिनीची कागदपत्रे सुरक्षित लॉकरमध्ये.", "हस्तकला आणि मूल्यवर्धित उत्पादनांतून नवे उत्पन्न. मरुधम 360, शेतकऱ्याच्या संपूर्ण प्रवासासाठी एक मंच."],ml:["മരുതം 360: വിള ആസൂത്രണം മുതൽ വിളവെടുപ്പ്, വിപണി, ധനകാര്യം, പുതിയ ഉപജീവനം വരെ കർഷകന്റെ കൂട്ടാളി.", "മണ്ണ്, കാലം, സ്ഥലം എന്നിവ അനുസരിച്ച് എഐ വിളയും വിത്തും നിർദേശിക്കുന്നു; ചെലവ്, വരുമാനം, ജലസേചന പദ്ധതിയും ലഭിക്കും.", "ഉപഗ്രഹ എൻഡിവിഐ ഓരോ വയലിന്റെയും ആരോഗ്യം നിരീക്ഷിക്കുന്നു; കീടഭീഷണിയും കാലാവസ്ഥാ മുന്നറിയിപ്പും നേരത്തെ ലഭിക്കും.", "ഇന്റർനെറ്റ് ഇല്ലെങ്കിലും വിളയുടെ ചിത്രം ഫോണിൽ തന്നെ പരിശോധിക്കും; സംസാരിച്ച് ചോദിക്കാം, ശബ്ദത്തിൽ ഉപദേശം കേൾക്കാം.", "ഓരോ ജോലിക്കും ഡിജിറ്റൽ രേഖയുണ്ടാകും; തൊഴിലാളികളും യന്ത്രങ്ങളും എളുപ്പത്തിൽ ലഭിക്കും; വിളവെടുപ്പിനു ശേഷം ഗുണനിലവാരവും സംഭരണവും നിരീക്ഷിക്കും.", "വിപണി വില താരതമ്യം, ലാഭനഷ്ടക്കണക്ക്, വായ്പ, ഇൻഷുറൻസ് വിവരങ്ങൾ, പ്രധാന രേഖകൾ സുരക്ഷിതമായ ലോക്കറിൽ.", "കരകൗശലവും മൂല്യവർധിത ഉൽപ്പന്നങ്ങളും വഴി പുതിയ വരുമാനം. മരുതം 360, കർഷകന്റെ മുഴുവൻ യാത്രയ്ക്കും ഒരൊറ്റ വേദി."]};
 var S=[].slice.call(document.querySelectorAll('.sc')),i=0,el=0,playing=false,voice=false,musicOn=false,lang='en',speaking=false,done=true,last=Date.now(),started=false;
 var total=S.reduce(function(a,s){return a+ +s.dataset.t},0);
 function mk(t,c,html){var e=document.createElement(t);if(c)e.className=c;if(html)e.innerHTML=html;return e}
 /* scene visuals */
 var v0=mk('div','viz');['🌱','🌾','🛰️','📱','💰'].forEach(function(x){v0.appendChild(mk('div','fl',x))});S[0].appendChild(v0);
 var v1=mk('div','viz');[45,70,55,90,65].forEach(function(h,n){v1.appendChild(mk('div','bar'+(n==3?' best':''))).style.setProperty('--h',h+'%')});S[1].appendChild(v1);
-var wv=mk('div','wave');for(var k=0;k<24;k++){var u=mk('u');u.style.animationDelay=(k*0.07)+'s';wv.appendChild(u)}S[3].querySelector('div>div').appendChild(wv);
-var tl=mk('div','tl');['Seed','Sowing','Growth','Protection','Harvest','Grade','Store'].forEach(function(x){tl.appendChild(mk('span','','● '+x))});S[4].appendChild(tl);
-var v5=mk('div','viz');[55,80,62].forEach(function(h,n){v5.appendChild(mk('div','bar'+(n==1?' best':''))).style.setProperty('--h',h+'%')});S[5].appendChild(v5);
-var g=document.getElementById('ndvi');for(var k=0;k<100;k++)g.appendChild(mk('i'));
-function paint(){[].forEach.call(g.children,function(c,n){c.style.background='';setTimeout(function(){var v=Math.sin(n*1.7)+Math.cos(n*0.6);c.style.background=v>1.1?'#c0392b':v>0.1?'#E3B448':'#2e8b3d'},n*40)})}
-var seq=null;
-function runSeq(){clearInterval(seq);var n=0;
- if(i==4){var sp=tl.children;[].forEach.call(sp,function(s){s.classList.remove('h')});seq=setInterval(function(){if(!playing)return;if(n<sp.length)sp[n++].classList.add('h')},1100)}
- if(i==6){var b=S[6].querySelectorAll('.flow b');[].forEach.call(b,function(s){s.classList.remove('h')});seq=setInterval(function(){if(!playing)return;if(n<b.length)b[n++].classList.add('h')},900)}}
-/* audio: warm pad + soft pentatonic plucks, ducked under narration */
-var AC,master,notes=[293.66,329.63,369.99,440,493.88,587.33];
-function initAudio(){if(AC)return;AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=0;
- var c=AC.createDynamicsCompressor();master.connect(c);c.connect(AC.destination);
- [146.83,220,293.66,369.99].forEach(function(f,n){var o=AC.createOscillator(),gn=AC.createGain(),l=AC.createOscillator(),lg=AC.createGain();
-  o.type=n%2?'sine':'triangle';o.frequency.value=f;gn.gain.value=.25/(n+1);l.frequency.value=.1+n*.05;lg.gain.value=.06/(n+1);
-  l.connect(lg);lg.connect(gn.gain);o.connect(gn);gn.connect(master);o.start();l.start()});
- setInterval(function(){if(playing&&musicOn&&!speaking&&Math.random()<.7)pluck(notes[Math.floor(Math.random()*notes.length)],.35)},650)}
-function pluck(f,v){if(!AC)return;var t=AC.currentTime,o=AC.createOscillator(),gn=AC.createGain();o.type='sine';o.frequency.value=f;
- gn.gain.setValueAtTime(0,t);gn.gain.linearRampToValueAtTime(v,t+.02);gn.gain.exponentialRampToValueAtTime(.0001,t+1.8);o.connect(gn);gn.connect(master);o.start(t);o.stop(t+1.9)}
-function level(){if(master)master.gain.setTargetAtTime(!musicOn?0:(speaking?.015:.14),AC.currentTime,.5)}
-/* narration: pick the best available voice for the language */
-function sc(v){var s=0;if(/natural|neural|online|premium|enhanced|google/i.test(v.name))s+=6;if(/india|en-in|heera|ravi|neerja|prabhat|swara|valluvar/i.test(v.name+v.lang))s+=3;if(v.localService===false)s+=1;return s}
-function vlist(){var p=lang=='ta'?'ta':'en';return speechSynthesis.getVoices().filter(function(v){return v.lang.toLowerCase().replace('_','-').indexOf(p)==0}).sort(function(x,y){return sc(y)-sc(x)})}
-function fill(){if(!('speechSynthesis' in window))return;var s=document.getElementById('vsel'),l=vlist(),cur=s.value;
- s.innerHTML=l.length?l.map(function(v){return '<option value="'+v.name+'">'+v.name+'</option>'}).join(''):'<option value="">No '+(lang=='ta'?'Tamil':'English')+' voice found</option>';
- if(cur&&l.some(function(v){return v.name==cur}))s.value=cur}
-function pick(){var l=vlist(),n=document.getElementById('vsel').value;return l.filter(function(v){return v.name==n})[0]||l[0]||null}
-function say(){var txt=lang=='ta'?TA[i]:S[i].dataset.say;document.getElementById('cap').textContent=txt;
- if(!('speechSynthesis' in window))return;speechSynthesis.cancel();speaking=false;
- if(!voice){done=true;level();return}
- done=false;var v=pick(),parts=txt.match(/[^.!?]+[.!?]*/g)||[txt],gen=++say.g;
- parts.forEach(function(t,n){t=t.trim();if(!t)return;var u=new SpeechSynthesisUtterance(t);if(v){u.voice=v;u.lang=v.lang}else u.lang=lang=='ta'?'ta-IN':'en-IN';
-  u.rate=lang=='ta'?.8:.85;u.pitch=1;u.volume=1;
-  u.onstart=function(){speaking=true;level()};
-  u.onerror=function(){if(gen==say.g){speaking=false;done=true;level()}};
-  if(n==parts.length-1)u.onend=function(){if(gen==say.g){speaking=false;done=true;level()}};
-  speechSynthesis.speak(u)})}
-say.g=0;
-function show(n){i=(n+S.length)%S.length;el=0;S.forEach(function(s,x){s.classList.toggle('on',x==i)});
- if(i==2)paint();runSeq();say();pluck(587.33,.5)}
-function tick(){var now=Date.now(),d=(now-last)/1000;last=now;
- if(playing){el+=d;var t=+S[i].dataset.t;
-  if(el>=t&&(done||el>t+30)){if(i<S.length-1)show(i+1);else{playing=false;document.getElementById('play').textContent='Replay'}}}
- var b=0;for(var x=0;x<i;x++)b+= +S[x].dataset.t;
- document.getElementById('bar').style.width=Math.min(100,(b+Math.min(el,+S[i].dataset.t))/total*100)+'%';requestAnimationFrame(tick)}
-function begin(snd){document.getElementById('start').style.display='none';
- if(snd){initAudio();if(AC.resume)AC.resume();voice=true;musicOn=true;
-  document.getElementById('voice').textContent='Narration: on';document.getElementById('music').textContent='Music: on'}
- playing=true;show(0)}
-document.getElementById('go1').onclick=function(){begin(true)};
-document.getElementById('go0').onclick=function(){begin(false)};
-document.getElementById('prev').onclick=function(){show(i-1)};
-document.getElementById('next').onclick=function(){show(i+1)};
-document.getElementById('play').onclick=function(){
- if(!playing&&i==S.length-1&&el>=+S[i].dataset.t){show(0)}
- playing=!playing;this.textContent=playing?'Pause':'Play';
- if('speechSynthesis' in window)playing?speechSynthesis.resume():speechSynthesis.pause()};
-document.getElementById('restart').onclick=function(){playing=true;document.getElementById('play').textContent='Pause';show(0)};
-document.getElementById('voice').onclick=function(){voice=!voice;this.textContent='Narration: '+(voice?'on':'off');if(voice)initAudio();say()};
-document.getElementById('music').onclick=function(){musicOn=!musicOn;this.textContent='Music: '+(musicOn?'on':'off');if(musicOn){initAudio();if(AC.resume)AC.resume()}level()};
-document.getElementById('lang').onclick=function(){lang=lang=='en'?'ta':'en';this.textContent=lang=='en'?'தமிழ்':'English';fill();say()};
-if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=fill;fill();document.getElementById('vsel').onchange=function(){say()}}
-document.getElementById('cap').textContent=S[0].dataset.say;requestAnimationFrame(tick);
-</script>
-</body></html>
+var wv=mk('div','wave');for(var k=0;k<24;k++){var u=mk('u
